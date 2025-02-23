@@ -18,9 +18,9 @@
 
 ## 備註
 - **手動審核**，確保網址的合法性與穩定性  
-- **支援中文網址**，支持中文英文日文如 https://連結.com/中文 https://連結.com/test https://連結.com/テスト
+- **支援中文網址**，支持中文英文日文如 ht tps://連結.com/中文 ht tps://連結.com/test ht tps://連結.com/テスト
 - **目前僅支持部分對應網址**，提供 youtube、X、facebook、twitch、instagram、discord(因避免非本人造生困擾，只接受伺服器，故人帳號不接受)
-- **中文子網域轉址**，https://中文.連結.com/與https://中文.連結.com/暫不開放  
+- **中文子網域轉址**，ht tps://中文.連結.com/與ht tps://中文.連結.com/暫不開放  
 - 
 ## 提交流程
 1. 提交申請(email)，提供您希望的中文網址與對應目標網址  
