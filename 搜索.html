@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轉址搜尋</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input { width: 100%; padding: 10px; margin-bottom: 10px; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 5px 0; }
+        a { text-decoration: none; color: blue; }
+    </style>
+</head>
+<body>
+    <h1>轉址搜尋</h1>
+    <input type="text" id="search" placeholder="輸入關鍵字搜尋">
+    <ul id="results"></ul>
+    
+    <script>
+        const categories = ["vtuber", "繪師", "網站", "新聞", "直播", "特殊"];
+        const jsonFiles = categories.map(cat => `/redirects/${cat}.json`);
+        let redirects = {};
+
+        Promise.all(jsonFiles.map(file => 
+            fetch(file).then(res => res.ok ? res.json() : {}).catch(() => ({}))
+        )).then(responses => {
+            redirects = Object.assign({}, ...responses);
+        });
+
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const resultsList = document.getElementById('results');
+            resultsList.innerHTML = '';
+            
+            if (!query) return;
+            
+            Object.entries(redirects).forEach(([path, url]) => {
+                if (path.toLowerCase().includes(query) || url.toLowerCase().includes(query)) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${url}" target="_blank">${path} → ${url}</a>`;
+                    resultsList.appendChild(li);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
