@@ -48,18 +48,24 @@
         a:hover {
             text-decoration: underline;
         }
-        .fixed-link {
+        .fixed-links {
             position: absolute;
             top: 10px;
             right: 20px;
             font-size: 16px;
         }
+        .fixed-links a {
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
-    <a href="https://連結.com/README.md" class="fixed-link" target="_blank">使用說明</a>
-</br>    <a href="https://docs.google.com/forms/d/e/1FAIpQLSejoul3NAIdVtNN-TNHfpiyX_RGxbumUru62m9ln5Kgtsp1Tg/viewform?usp=dialog" class="fixed-link" target="_blank">申請</a>
-</br>    <a href="mailto:ggh19950808@gmail.comm" class="fixed-link" target="_blank">技術支持</a>
+    <div class="fixed-links">
+        <a href="https://連結.com/README.md" target="_blank">使用說明</a>
+        <a href="https://連結.com/設定" target="_blank">設定</a>
+        <a href="https://連結.com/支援" target="_blank">支援</a>
+    </div>
+    
     <h1>轉址搜尋</h1>
     <input type="text" id="search" placeholder="輸入關鍵字搜尋">
     <ul id="results"></ul>
@@ -85,7 +91,7 @@
             Object.entries(redirects).forEach(([path, url]) => {
                 if (path.toLowerCase().includes(query) || url.toLowerCase().includes(query)) {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="${url}" target="_blank">${path} → ${url}</a>`;
+                    li.innerHTML = `<a href="${url}" target="_blank">連結.com/${path} → ${url}</a>`;
                     resultsList.appendChild(li);
                 }
             });
