@@ -91,7 +91,7 @@
             Object.entries(redirects).forEach(([path, url]) => {
                 if (path.toLowerCase().includes(query) || url.toLowerCase().includes(query)) {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="${url}" target="_blank">連結.com/${path} → ${url}</a>`;
+                    li.innerHTML = `<a href="${url}" target="_blank">連結.com${path} → ${url}</a>`;
                     resultsList.appendChild(li);
                 }
             });
